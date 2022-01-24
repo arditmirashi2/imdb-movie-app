@@ -28,51 +28,51 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 It contains the source code of the project.
 
--src/assets
+- src/assets
 
 It contain the assets like images, icons & fonts
 
--src/components
+- src/components
 
 It contains the reusable atomic & molecular components
 
 Button component structure explained below:
 
--Button/Button.tsx
+- Button/Button.tsx
 
 It contain the actual component code
 
--Button/index.tsx
+- Button/index.tsx
 
 It contains the default import for the Button component
 
--src/constants
+- src/constants
 
 It contain the constant files
 Eg : Regex & other application generic constant
 
--src/helpers
+- src/helpers
 
 It contains the reusable helper functions
 
--src/layouts
+- src/layouts
 
 It contains the layout components
 layout is the common top wrapper component usually will contain navbar , sidebar and children components
 
--src/pages
+- src/pages
 
 It contain the page components.
 
--src/routes
+- src/routes
 
 It contains the page routes
 
--src/redux
+- src/redux
 
 It contains the redux files like slices, hooks & reducers.
 
--src/styles
+- src/styles
 
 It contains the components, layouts and pages styles
 
