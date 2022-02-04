@@ -8,6 +8,7 @@ interface HomeProps {
 export const Home: React.FunctionComponent<HomeProps> = () => {
   return (
     <main>
+      <h1>The home page</h1>
       <Button>
         <b>A simple button</b>
       </Button>
