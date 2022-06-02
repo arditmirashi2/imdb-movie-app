@@ -8,12 +8,17 @@ type Route = {
   path?: string;
 };
 
-const HomePageLoader = () => import('../pages/Home') 
+const HomePageLoader = () => import('../components/Home') 
+const MoviePageLoader = () => import("../components/Movie");
 
 const routes: Route[] = [
   {
     path: "/",
     element: <CostumLoadable loader={HomePageLoader}/>
+  },
+  {
+    path: "movie/:movieId",
+    element: <CostumLoadable loader={MoviePageLoader} />
   }
 ];
 

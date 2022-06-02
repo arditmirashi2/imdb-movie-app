@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../store';
 import { fetchMovies } from './movieApi';
 import { IRequestResponse } from '../../../models/common';
+import Movies from '../../../constants/data';
 
 export interface Genre {
   key: string;
@@ -18,7 +19,7 @@ export interface Movie {
   image: string;
   title: string;
   description: string;
-  runTimeStr: string;
+  runTimeStr?: string;
   genres: string;
   genreList: Array<Genre>;
   contentRating: string;
@@ -78,7 +79,7 @@ export const movieSlice = createSlice({
       })
       .addCase(fetchMoviesAsync.fulfilled, (state, action) => {
         if(action.payload.success) {
-          state.movieList.items = action.payload.payload;
+          state.movieList.items = Movies as Array<Movie>;
           state.movieList.loading = false;
           state.movieList.errorMessage = null;
         } else {

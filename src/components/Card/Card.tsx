@@ -1,5 +1,5 @@
-import React from 'react';
-import {Card as AntCard} from 'antd';
+import React, { Suspense } from 'react';
+import {Card as AntCard, Spin} from 'antd';
 import { ICard } from "../../models/common";
 
 const {Meta} = AntCard;
@@ -10,7 +10,17 @@ interface CardProps extends ICard {
 
 
 export function Card(props: CardProps) {
-    return <AntCard onClick={props.onClick} cover={<img src={props.cover} alt={props.meta.title}></img>} hoverable={props.hoverable}>
+
+    const ImageImport =  React.lazy(() => import("../CardImage"))
+
+    const LazyLoadedImage = (props: {src: string, title: string}) => {
+        return <Suspense fallback={<Spin />}>
+            <ImageImport src={props.src} title={props.title}/>
+        </Suspense>
+    }
+
+
+    return <AntCard onClick={props.onClick} cover={<LazyLoadedImage src={props.cover} title={props.meta.title}/>} hoverable={props.hoverable}>
         <Meta {...props.meta}></Meta>
     </AntCard>
 }
