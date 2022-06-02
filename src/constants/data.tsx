@@ -1390,4 +1390,35 @@ const Movies = [ {
 }]
 
 
+
+export const movieGenres = [{
+    value: "action",
+    label: "Action"
+},
+{
+    value: "action",
+    label: "Action"
+},
+{
+    value: "action",
+    label: "Action"
+},
+{
+    value: "action",
+    label: "Action"
+},
+{
+    value: "action",
+    label: "Action"
+},
+{
+    value: "action",
+    label: "Action"
+},
+{
+    value: "action",
+    label: "Action"
+}]
+
+
 export default Movies;

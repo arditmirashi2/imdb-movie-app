@@ -14,7 +14,7 @@ export function CardListContainer(props: CardListContainerProps) {
 
   return <Row gutter={[48, 48]}>
       {items.map((item: ICard, index: number) => {
-        return <Col span={4} key={index}>
+        return <Col span={3} key={index}>
           <Card {...item}/>
         </Col>
       })}
