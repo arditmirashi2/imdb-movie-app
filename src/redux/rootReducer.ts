@@ -1,8 +1,8 @@
-import counterReducer from './slices/counter/counterSlice';
+import movieReducer from './slices/movie/movieSlice';
 import { combineReducers } from '@reduxjs/toolkit';
 
 const rootReducer = combineReducers({
-  counter: counterReducer,
+  movie: movieReducer,
 });
 
 export default rootReducer;
