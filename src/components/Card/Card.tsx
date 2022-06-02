@@ -14,7 +14,7 @@ export function Card(props: CardProps) {
     const ImageImport =  React.lazy(() => import("../CardImage"))
 
     const LazyLoadedImage = (props: {src: string, title: string}) => {
-        return <Suspense fallback={<Spin />}>
+        return <Suspense fallback={<div>Loading...</div>}>
             <ImageImport src={props.src} title={props.title}/>
         </Suspense>
     }

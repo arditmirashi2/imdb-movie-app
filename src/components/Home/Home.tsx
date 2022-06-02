@@ -4,7 +4,8 @@ import CardListContainer from '../CardListContainer';
 import {fetchMoviesAsync, selectMovieList, selectMovieListLoading, selectMovieListErrorMessage, Movie} from '../../redux/slices/movie/movieSlice';
 import {Spin} from 'antd';
 import FilterForm from '../FilterForm';
-import {useNavigate} from 'react-router'
+import {useNavigate} from 'react-router';
+import "./Home.css";
 
 interface HomeProps {
   children: any;
@@ -29,8 +30,9 @@ export const Home: React.FunctionComponent<HomeProps> = () => {
   }, [])
 
 
-  return<React.Fragment> 
+  return <div className='home-container'> 
     <FilterForm />
+    <div className='content-area-container'>
     {movieListLoading ? <Spin size='large'/> : <CardListContainer items={Array.isArray(movieList) ? movieList.map((movie: Movie) => ({
     meta: {
       title: movie.title,
@@ -42,5 +44,7 @@ export const Home: React.FunctionComponent<HomeProps> = () => {
       navigate(`/movie/${movie.id}`)
     }
   })) : []}/>}
-  </React.Fragment>
+  </div>
+  </div>
+  
 };

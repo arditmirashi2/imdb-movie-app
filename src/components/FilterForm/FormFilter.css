@@ -1,0 +1,11 @@
+.form-filter-container {
+    position: sticky;
+    left: 0;
+    top: 7%;
+    padding: 1rem;
+    min-height: 100vh;
+    min-width: 20%;
+    border-right: 1px solid gainsboro;
+    float: left;
+}
+

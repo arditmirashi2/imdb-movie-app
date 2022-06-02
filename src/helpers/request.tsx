@@ -25,7 +25,7 @@ class Request {
         delete options.query;
       }
       const response = await api(options);
-      return { success: true, payload: (response.data as any).results || response };
+      return { success: true, payload: (response.data as any).results || response.data };
     } catch (error: any) {
       return {success: false, payload: error.message}
     }

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../store';
-import { fetchMovies } from './movieApi';
+import { fetchMovieById, fetchMovies, fetchMovieTrailerById } from './movieApi';
 import { IRequestResponse } from '../../../models/common';
 import Movies from '../../../constants/data';
 
@@ -29,6 +29,8 @@ export interface Movie {
   plot: string;
   stars: string;
   starList: Array<Star>;
+  fullTitle?: string;
+  videoUrl?: string;
 }
 
 export interface MovieState {
@@ -65,6 +67,12 @@ export const fetchMoviesAsync = createAsyncThunk(
   },
 );
 
+export const fetchMovieAsync = createAsyncThunk("movie/fetchMovie", async (movieId: string) => {
+  const response = await fetchMovieById(movieId);
+  const trailerResponse = await fetchMovieTrailerById(movieId);
+  return {generalInformationResponse: response, trailerResponse: trailerResponse};
+})
+
 export const movieSlice = createSlice({
   name: 'movie',
   initialState,
@@ -79,7 +87,7 @@ export const movieSlice = createSlice({
       })
       .addCase(fetchMoviesAsync.fulfilled, (state, action) => {
         if(action.payload.success) {
-          state.movieList.items = Movies as Array<Movie>;
+          state.movieList.items = action.payload.payload;
           state.movieList.loading = false;
           state.movieList.errorMessage = null;
         } else {
@@ -87,7 +95,21 @@ export const movieSlice = createSlice({
           state.movieList.loading = false;
           state.movieList.errorMessage = action.payload.payload;
         }
-      });
+      }).addCase(fetchMovieAsync.pending, state => {
+        state.activeMovie.loading = true;
+        state.activeMovie.errorMessage = null;
+      })
+      .addCase(fetchMovieAsync.fulfilled, (state, action) => {
+        if(action.payload.generalInformationResponse.success) {
+          state.activeMovie.item = {...action.payload.generalInformationResponse.payload, ...action.payload.trailerResponse.payload};
+          state.activeMovie.loading = false;
+          state.activeMovie.errorMessage = null;
+        } else {
+          state.activeMovie.item = null;
+          state.activeMovie.loading = false;
+          state.activeMovie.errorMessage = action.payload.generalInformationResponse.payload;
+        }
+      })
   },
 });
 
@@ -97,6 +119,12 @@ export const selectMovieList = (state: RootState): Array<Movie> => state.movie.m
 export const selectMovieListLoading = (state: RootState): boolean => state.movie.movieList.loading;
 
 export const selectMovieListErrorMessage = (state: RootState): string | null => state.movie.movieList.errorMessage;
+
+export const selectActiveMovie = (state: RootState): Movie | null => state.movie.activeMovie.item;
+
+export const selectActiveMovieLoading = (state: RootState): boolean => state.movie.activeMovie.loading;
+
+export const selectActiveMovieErrorMessage = (state: RootState): string | null => state.movie.activeMovie.errorMessage;
 
 
 export default movieSlice.reducer;

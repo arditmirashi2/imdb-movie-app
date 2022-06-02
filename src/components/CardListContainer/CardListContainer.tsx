@@ -1,22 +1,23 @@
 import React from 'react';
-import {Row, Col} from 'antd';
+import { Row, Col } from 'antd';
 import Card from '../Card';
-import {ICard} from '../../models/common'
+import { ICard } from '../../models/common';
+import "./CardListContainer.css"
 
 interface CardListContainerProps {
-    children?: any,
-    items: Array<ICard>
+  children?: any;
+  items: Array<ICard>;
 }
 
 export function CardListContainer(props: CardListContainerProps) {
+  const { items } = props;
 
-  const {items} = props;
-
-  return <Row gutter={[48, 48]}>
+  return (
+    <div className='card-list-container'>
+      {' '}
       {items.map((item: ICard, index: number) => {
-        return <Col span={3} key={index}>
-          <Card {...item}/>
-        </Col>
+        return <Card {...item} />;
       })}
-  </Row>
+    </div>
+  );
 }
