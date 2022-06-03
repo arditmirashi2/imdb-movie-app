@@ -1,1 +1,1 @@
-export {FilterForm as default} from './FilterForm'
+export { FilterForm as default } from './FilterForm';

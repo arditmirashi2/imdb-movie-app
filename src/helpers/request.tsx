@@ -5,13 +5,12 @@ import { IRequestResponse } from '../models/common';
 
 const api = axios.create({});
 
-
 interface RequestOptions {
-    query?: any;
-    url: string;
-    method: "GET" | "POST" | "DELETE" | "PUT" | "PATCH",
-    headers?: any;
-    data?: any;
+  query?: any;
+  url: string;
+  method: 'GET' | 'POST' | 'DELETE' | 'PUT' | 'PATCH';
+  headers?: any;
+  data?: any;
 }
 
 class Request {
@@ -25,9 +24,12 @@ class Request {
         delete options.query;
       }
       const response = await api(options);
-      return { success: true, payload: (response.data as any).results || response.data };
+      return {
+        success: true,
+        payload: (response.data as any).results || response.data,
+      };
     } catch (error: any) {
-      return {success: false, payload: error.message}
+      return { success: false, payload: error.message };
     }
   }
 }

@@ -20,6 +20,7 @@
     "axios": "^0.23.0",
     "config": "^3.3.7",
     "history": "^5.2.0",
+    "nprogress": "^0.2.0",
     "query-string": "^7.1.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -36,8 +37,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
-    "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix"
+    "pretty": "prettier --write \"./**/*.{ts,tsx,js,jsx,json}\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -55,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@types/nprogress": "^0.2.0",
     "eslint": "^7.32.0",
     "prettier": "^2.5.1",
     "react-hooks": "^1.0.1",

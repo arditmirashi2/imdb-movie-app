@@ -1,1 +1,1 @@
-export {CardListContainer as default} from './CardListContainer'
+export { CardListContainer as default } from './CardListContainer';

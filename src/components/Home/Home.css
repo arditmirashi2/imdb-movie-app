@@ -1,3 +1,16 @@
 .home-container {
     position: relative;
 }
+
+
+.home-container .loading-container {
+    padding: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(50%, 50%);
+}
+
+.empty-message-container {
+    padding: 2rem;
+}

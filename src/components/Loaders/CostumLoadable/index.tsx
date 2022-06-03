@@ -1,1 +1,1 @@
-export {CustomLoadable as default} from './CostumLoadable';
+export { CustomLoadable as default } from './CostumLoadable';

@@ -1,3 +1,10 @@
 .movie-container {
     display: flex;
+    padding: 1rem;
+    height: 93vh;
+}
+
+.movie-container .loading-container {
+    align-self: center;
+    margin: auto;
 }

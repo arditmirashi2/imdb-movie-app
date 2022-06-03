@@ -1,12 +1,12 @@
 .card-list-container {
     padding: 1rem;
-    display: flex;
-    flex-flow: row wrap;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
 }
 
 .card-list-container * {
     align-self: stretch;
-    flex: 1 1 0px;
+    flex: 1 1 100px;
     min-width: 250px;
 }

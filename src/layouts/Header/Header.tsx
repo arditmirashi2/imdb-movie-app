@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 interface HeaderProps {
-    children: any
+  children: any;
 }
 
-export const Header: React.FunctionComponent<HeaderProps> = (props) => {
-    return <header>{props.children}</header>
-}
+export const Header: React.FunctionComponent<HeaderProps> = props => {
+  return <header>{props.children}</header>;
+};
